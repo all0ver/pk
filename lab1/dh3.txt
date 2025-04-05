@@ -1,0 +1,58 @@
+p - ustalona liczba pierwsze
+w ciele F*_p
+
+tak dobrać liczbę pierwszę p że p = 2n+1, gdzie n to liczba pierwsza
+
+g należące do F*_p takie że generujen n liczb #<g> = n (więc g generuje połowę tylko)
+
+użytkownicy: A, B, C
+
+a generuje klucz prywatny x_a od 2 do n-1
+b generuje klucz prywatny x_b od 2 do n-1
+c generuje klucz prywatny x_c od 2 do n-1
+
+i A generuje klucze publiczne K_A = g^x_a (mod p)
+i B generuje klucze publiczne K_B = g^x_a (mod p)
+i C generuje klucze publiczne K_C = g^x_a (mod p)
+
+wymieniają się kluczami publicznymi w cyklu
+
+A wysyła do B K_A, B do C K_B i C do A K_C
+
+
+A liczy K_CA = K_C^x_a (), B liczby K_AB = K_A^x_b (), C liczy K_BC = K_B^x_c ()
+
+A wysyła do B K_CA
+B wysyła do C K_AB
+C wysyła do A K_BC
+
+A liczy klucz K = K_BC^x_a ()
+B liczy klucz K = K_CA^x_b ()
+C liczy klucz K = K_AB^x_c ()
+
+
+Generacja parametrów dziedziny:
+parametr b - długość charakterystyki ciała p wyrażna w bitach
+
+więc trzeba mieć p, n i g
+
+
+** jeden program, a użytkownicy komunikują się przez zmienne
+
+
+do wysłania:
+plik jako plik txt
+
+b = 128
+(p ma 128 bitów)
+
+opisywać co się dzieje, która strona co robi (co policzyło, co wysłało itp.) (mogą być komentarze w pliku, ale realnie to co się wypisuje powinno wystarczyć
+
+do tego protokołu:
+na koniec sprawdzenie czy klucze policzone przez każdą ze stron są takie same (normalnie się tak nie robi bo to głupie)
+
+jak to jest sprawdzane:
+cały kod do cocalc
+
+power_mod(g,x_a,p) -> bez deklaracji ciał
+jeżeli python: g^x_a%p, ale raczej korzystać z power_mod, a nie z tego bo jeżeli wartości będą za duże to będzie problem
