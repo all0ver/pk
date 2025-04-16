@@ -1,0 +1,26 @@
+* wykorzystuje funcje jednokierunową do indentyfikacji użytkownika. Uzytkownik musi zapamiętać i zachować w tajemincy pewną wartość początkowoą x0
+
+* Kolejne wartości x_k w kolejnych krokach będą powstawać jako wyniki działania funkcji jednokierunkowej z argumentem x_k-1
+
+* użytkownik na początku musi wygenerować n iteracji (n - z ustalonego wcześniej zakresu) funkcji funcje
+
+* Następnie podaje wartość x_n systemowi
+
+* Przy pierwszym logowaniu wartość ta będzie funkcjonować jako identyfikator użytkownika nastomiast x_n-1 jako hasło
+
+Opis protokołu: 
+1. użytkownik przesyła aktualny identyfikator x_k
+2. system sprawda istnienie użytkownika o otrzymanym idenktyfikatorze, poczym żąda podania hasła czyli x_k-1
+3. użytkonik podaje hasło x_k-1
+4. system weryfikuje poprawność hasła, sprawdzając czy f(x_k-1) = x_k, jeśli tak, to zapamiętuje x_k-1 jako identyfikator przy następnym logowaniu
+
+
+** Z współdzielonym kluczem
+Założenia: W protokole tym użytkownik i system współdzielą tajny klucz szyfrowania Kolejne
+
+Opis protokołu:
+1. użytkownik przesyła do sytemu swój identyfikator
+2. system generuje losową liczbę Rand i przesyła ją użytkownikowi
+3. użytkownik szyfruje Rand przy użyciu klucza K i szyfrogram wysyła do systemu
+4. sytem szyfruje liczbę Rand przy użyciu klucza K i porównuje z wynikiem otrzymanym od użytkownika, w przypadku uzyskania pozytywnego wyniku zezwla na pracę w ramach przyznanych mu wcześniej uprawnień
+
