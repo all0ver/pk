@@ -1,0 +1,29 @@
+Mamy wiadomość M, którą chcemy podzielić, w tym celu wykonujemy czynności:
+
+1. Zaimplementować w środowisku sagemath schemat z wielomianem interpolacyjnym Lagrange'a
+
+Kroki protokołu:
+1. Wybieramy liczbę pierwszą p, która jest większa niż liczba możliwych cieni większa niż wartość tajemnicy, która ma być wspóldzielona
+
+2.Generowany jest dowolny wielomian stopnia k-1 (dla k z n osób uprawnionych do odtworzenia wiadomości) postaci:
+
+f(x) = a_(k-1)*x^(k-1)+a_(k-2)*x^(k-2)+ ... + a_1*x+M(mod p)
+
+gdzie współczynniki a_(k-1), a_(k-2), ...,a_1 należą do Z_p są wybrane losowo i utrzymane w tajemnicy. Są zapomniane po wydaniu cieni osobom upoważnionym, natomiast p jest ujawniane.
+
+3. Wyznaczamy cienie poprzez wyznaczenie wartości wielomianu w n różnych punktach x_i należy do Z, x_i > 0:
+
+l_i = f(x_i)
+
+4.Wysyłamy to do poszczególnych użytkowników systemu x_i, odpowiadającą jej wartość l_i oraz liczbę pierwszą p.
+
+5. Do wyznaczenia M musi się zebrać dowolny podzbiór k osób posiadających cienie. Mogą one wtedy wyznaczyć a_(k-1), a_(k-2), ...,a_1 oraz M poprzez odtworzenie postaci wielomianu f(x) (rozwiązaniu układu k kongruencji z k niewiadomymi a_(k-1), a_(k-2), ...,a_1 oraz M)
+
+# Wytyczne:
+
+W ramach zadania należy zaimplementować procedury realizujące następujące elementy:
+1. procedurę generacji cieni
+2. protokół odtwarzania tajemnicy
+
+Parametrami wejściowymi są; tajemnica do podziału M, parametry schematu k i n
+
