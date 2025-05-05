@@ -1,0 +1,29 @@
+x0 - losowe
+x1 = f(x0)
+...
+
+x_k -> ostatnia wartosc, gdzie k = 10
+
+
+A wysyła x_k do S,
+S sprawdza czy x_k nalezy do zbioru uzytkownikow w systemie
+jeżeli nie to koniec, jeżeli tak to pyta A o hasło
+A wysyła x_k-1
+System liczby f(x_k-1) i sprawdza czy jest równa z x_k
+jeżeli się zgadza to użytkowik jest logowany oraz aktualizuje x_k_saved
+ostanie logowanie jest przy pomocy x0
+
+
+założenia dodatkowe:
+* funkcja jednokierunkowa -> 
+
+t <= K
+
+
+maksymalnie na 4 punkty: więcej użytkowników, np
+
+każdy użytkownik przesyła 
+
+trzeba wybrać który się będzie logował
+
+łącznie wciąż l logowań, ale np dla 2 użytkowników
