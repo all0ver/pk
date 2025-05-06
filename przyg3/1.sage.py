@@ -66,9 +66,14 @@ print()
 print("Krok 3: Wyznaczenie cieni poprzez wyznaczenie wartosci wielomianu w n roznych punkach")
 print("Krok 4: Wyslanie do poszczegolnych uzytkownikow systemu x_i oraz odpowiadajaca jej wartosci l_i, oraz liczbe pierwsza p")
 # wygenerowanie cieni
+used = []
 for i in range(n):
     x_i = i+_sage_const_1 
     r = random.randint(_sage_const_1 , p)
+    while r in used:
+        r = random.randint(_sage_const_1 , p)
+
+    used.append(r)
     l[i, _sage_const_0 ] = r
     l[i, _sage_const_1 ] = f(r)
     l[i, _sage_const_2 ] = p
@@ -94,13 +99,13 @@ for i in KM:
     print(f"KM indeks: {i}, x_i = l[{i}, 0] = {l[i,_sage_const_0 ]}, l_i = {l[i,_sage_const_1 ]}")
 
 
-print("Aby odtworzyc f nalezy rozwiazac uklad kongruencji: A * a = B, gdzie:")
+print("Aby odtworzyc f nalezy rozwiazac uklad kongruencji: A * c = B, gdzie:")
 print("A - macierz z x do potegi")
-print("a - wektor wspolczynnikow wielomianu - szukana")
+print("c - wektor wspolczynnikow wielomianu - szukana")
 print("B - wektor wartosci wielomianu (f(x_i))")
 
 A = zero_matrix(F, k, k)
-a = zero_vector(F, k)
+c = zero_vector(F, k)
 B = zero_vector(F, k)
 
 # zapelnienie A oraz B
@@ -116,25 +121,25 @@ print()
 print()
 print()
 
-print("Rownanie A * a = B: ")
+print("Rownanie A * c = B: ")
 print(A," * (w_1, w_2, w_3, w_4, w_5)^T = ", B, "^T")
 print()
 print()
 print("Gdzie w_i to szukane wspolczynniki wielomianu")
 
 # rozwiazanie rownania
-a = A.solve_right(B)
+c = A.solve_right(B)
 
 
 print()
 print()
 print()
 
-print("Otrzymane a (wspolczynniki): ", a)
-print("Wiadomo, ze a_0 = M, stad M = ", a[_sage_const_0 ])
+print("Otrzymane a (wspolczynniki): ", c)
+print("Wiadomo, ze c_0 = M, stad M = ", c[_sage_const_0 ])
 print("M z poczatku zadnia: ", M)
 
-if (M == a[_sage_const_0 ]):
+if (M == c[_sage_const_0 ]):
     print("Wiadomosci sa takie same")
 else:
     print("Wiadomosci nie sa takie same")
@@ -144,7 +149,7 @@ print()
 print()
 print("Sprawdzenie wszystkich cieni z otrzymanym wielomianem:")
 
-f_odtworzony = sum([a[i] * x**i for i in range(k)])
+f_odtworzony = sum([c[i] * x**i for i in range(k)])
 
 print("Odtworzony wielomian: ", f_odtworzony)
 
