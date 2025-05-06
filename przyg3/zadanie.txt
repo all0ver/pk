@@ -27,3 +27,31 @@ W ramach zadania należy zaimplementować procedury realizujące następujące e
 
 Parametrami wejściowymi są; tajemnica do podziału M, parametry schematu k i n
 
+
+z zajęć:
+
+M = wartosc losowa z zakresu: (1, p-1)
+
+p >
+
+n = 10
+
+k = 5
+
+wielomian (wspolczynniki z ciala F, ale losowe)
+wyraz wolny = M
+
+p = 2^24
+
+
+dla 1 uczestnika
+
+1 x należy do <1, p-1>, i liczy f(x_1)
+x nie mogą się powtarzać
+każdy uczestnik potrzebuje 3 <xi, li, p>
+
+
+wymagania do odzyskania
+- losowo wybrani uzytkownicy
+- k <= n <= n
+- można sprawdzić 

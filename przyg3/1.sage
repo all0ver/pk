@@ -5,11 +5,12 @@
 import random
 
 
-print("Krok 1: Wylosowanie M, n oraz k, oraz znalezienie liczby pierwszej p > max(M, n)")
-M = random.randint(1, 100000000)
-n = random.randint(4, 10)
-k = random.randint(3, n-1)
-p = next_prime(max(M, n))
+print("Krok 1: Znalezienie p, wylosowanie M oraz ustawienia n = 10 i k = 5")
+u = 2^24
+p = next_prime(u)
+M = random.randint(1, p)
+n = 10
+k = 5
 
 # M - wiadomosc
 print("M: ", M)
@@ -49,7 +50,8 @@ print("f: ", f)
 # wygenerowanie pierscienia wielomianu i wielomianu
 
 # tablica uzytkownikow i cieni
-l = zero_matrix(F, n, 2)
+# l = zero_matrix(F, n, 2)
+l = zero_matrix(n, 3)
 
 
 print()
@@ -61,10 +63,15 @@ print("Krok 4: Wyslanie do poszczegolnych uzytkownikow systemu x_i oraz odpowiad
 # wygenerowanie cieni
 for i in range(n):
     x_i = i+1
-    l[i, 0] = x_i
-    l[i, 1] = f(x_i)
+    r = random.randint(1, p)
+    l[i, 0] = r
+    l[i, 1] = f(r)
+    l[i, 2] = p
 
-print("Cienie l (uzytkownik, cień):")
+print()
+print()
+
+print("Cienie l (x_i, l_i, p):")
 print(l)
 
 print()
@@ -79,7 +86,7 @@ KM = random.sample(range(n), k)
 
 print("Losowo wybrane osoby: ", KM)
 for i in KM:
-    print(f"KM indeks: {i}, x_i = l[{i}, 0] = {l[i,0]}")
+    print(f"KM indeks: {i}, x_i = l[{i}, 0] = {l[i,0]}, l_i = {l[i,1]}")
 
 
 print("Aby odtworzyc f nalezy rozwiazac uklad kongruencji: A * a = B, gdzie:")
@@ -105,7 +112,10 @@ print()
 print()
 
 print("Rownanie A * a = B: ")
-print(A," * ", a, "^T = ", B, "^T")
+print(A," * (w_1, w_2, w_3, w_4, w_5)^T = ", B, "^T")
+print()
+print()
+print("Gdzie w_i to szukane wspolczynniki wielomianu")
 
 # rozwiazanie rownania
 a = A.solve_right(B)
@@ -115,7 +125,26 @@ print()
 print()
 print()
 
-print("Otrzymane a: ", a)
+print("Otrzymane a (wspolczynniki): ", a)
 print("Wiadomo, ze a_0 = M, stad M = ", a[0])
 print("M z poczatku zadnia: ", M)
 
+if (M == a[0]):
+    print("Wiadomosci sa takie same")
+else:
+    print("Wiadomosci nie sa takie same")
+
+print()
+print()
+print()
+print("Sprawdzenie wszystkich cieni z otrzymanym wielomianem:")
+
+f_odtworzony = sum([a[i] * x^i for i in range(k)])
+
+print("Odtworzony wielomian: ", f_odtworzony)
+
+for i in range(n):
+    x_i = l[i, 0]
+    oryginalny = l[i, 1]
+    odtworzony = f_odtworzony(x_i)
+    print(f"x = {x_i}, oryginalny: {oryginalny}, odtworzony: {odtworzony}")
