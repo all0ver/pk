@@ -21,7 +21,11 @@ print("k: ", k)
 print("p: ", p)
 
 
-print();
+
+print()
+print()
+print()
+
 print("Krok 2: Wygenerowanie wielomianu stopnia k-1 (wylosowanie wspolczynnikow a_i)")
 
 F = GF(p)
@@ -47,6 +51,11 @@ print("f: ", f)
 # tablica uzytkownikow i cieni
 l = zero_matrix(F, n, 2)
 
+
+print()
+print()
+print()
+
 print("Krok 3: Wyznaczenie cieni poprzez wyznaczenie wartosci wielomianu w n roznych punkach")
 print("Krok 4: Wyslanie do poszczegolnych uzytkownikow systemu x_i oraz odpowiadajaca jej wartosci l_i, oraz liczbe pierwsza p")
 # wygenerowanie cieni
@@ -57,6 +66,10 @@ for i in range(n):
 
 print("Cienie l (uzytkownik, cień):")
 print(l)
+
+print()
+print()
+print()
 
 print("Krok 5: Wyznaczenie M, przez zebranie dowolnego podzbioru k osob posiadajacych cienie. (Poprzez rozwiazanie ukladu kongruencji z k niewiadomymi)")
 
@@ -86,12 +99,23 @@ for i in range(k):
     for j in range(k):
         A[i, j] = x_i^j
 
+
+print()
+print()
+print()
+
 print("Rownanie A * a = B: ")
-print(A," * ", a, " = ", B)
+print(A," * ", a, "^T = ", B, "^T")
 
 # rozwiazanie rownania
 a = A.solve_right(B)
 
+
+print()
+print()
+print()
+
 print("Otrzymane a: ", a)
 print("Wiadomo, ze a_0 = M, stad M = ", a[0])
+print("M z poczatku zadnia: ", M)
 
