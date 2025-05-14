@@ -73,6 +73,7 @@ ma = (Integer(T) * t * z * m) % q
 print("T = ", T)
 print("m' = ", ma)
 
+print()
 print("K2. A wybiera losowe R z przedzialu: <1, ..., p-2>, gdzie NWD(R, p-1) = 1")
 while True:
     R = random.randint(_sage_const_1 , p-_sage_const_2 )
@@ -84,6 +85,7 @@ print("K2. A oblicza r = g^R (mod p)")
 r = (g**R)%p
 print("r = ", r)
 
+print()
 print("K3. A oblicza s, ktore spelnia: m' = rx+Rs (mod q)")
 
 R1 = pow(R, -_sage_const_1 , q)
@@ -112,6 +114,7 @@ print()
 print()
 print("Weryfikacja podpisu")
 
+print()
 print("K1. Uzytkownik B wytwarza dwie liczby losowe a i b. Oblicza: c = T^(T*m*a)*g^b (mod p) i przesyla c do A")
 a = random.randint(_sage_const_1 , _sage_const_2 **_sage_const_20 )
 b = random.randint(_sage_const_1 , _sage_const_2 **_sage_const_20 )
@@ -122,6 +125,7 @@ print("a = ", a)
 print("b = ", b)
 print("c = ", c)
 
+print()
 print("K2. Uzytkownik A wytwarza liczbe losowa k i oblicza:")
 k = random.randint(_sage_const_1 , _sage_const_2 **_sage_const_20 )
 print("h1 = c*g^k (mod p)")
@@ -135,10 +139,12 @@ print("h1 = ", h1)
 print("h2 = ", h2)
 print("Nastepuje przeslanie h1 i h2 do B")
 
+print()
 print("K3. Uzytkownik B przesyla do A wartosci a i b")
 print("a = ", a)
 print("b = ", b)
 
+print()
 print("K4. uzytkownik A sprawdza czy: c = T^(T*m*a)*g^b (mod p), jezeli tak to przsyla k do uzytkownika B, jezeli nie to koniec")
 
 # ca = (T^(T*m*a)*g^b)%p
@@ -149,7 +155,7 @@ if ca != c:
 else:
     print("Weryfikacja c poprawna, A wysyła k do B")
     # Kontynuuj z krokiem 5
-
+print()
 print("K5. Uzytkownik B oblicza: ")
 print("h1^ = T^(T*m*a)*g^(b+k) (mod p)")
 print("h2^ = y^(r*a)*r^(s*a)*u(b+k) (mod p)")
@@ -159,26 +165,10 @@ print("h2^ = y^(r*a)*r^(s*a)*u(b+k) (mod p)")
 # h2b = (y^(r*a)*r^(s*a)*u^(b+k))%p
 h1b = (pow(T, T*m*a, p) * pow(g, b+k, p)) % p
 h2b = (pow(y, r*a, p) * pow(r, s*a, p) * pow(u, b+k, p)) % p
-
-print("Wartosci przed obliczeniem h2:")
-print("h1 =", h1)
-print("z =", z)
-
-print("Wartosci przed obliczeniem h2b:")
-print("y =", y)
-print("r =", r)
-print("s =", s)
-print("a =", a)
-print("u =", u)
-print("b =", b)
-print("k =", k)
-
-# h2 = (h1^z)%p
-# h2b = (y^(r*a)*r^(s*a)*u^(b*k))%p
-
-print("h2 = ", h2)
-print("h2^ = ", h2b)
-
+print()
+print()
+print()
+print("Obliczone wartosci:")
 print("h1^ = ", h1b)
 print("h1 = ", h1)
 print("h2^ = ", h2b)
@@ -190,4 +180,7 @@ if h1 == h1b:
 
 if h2 == h2b:
     print("h2 sie zgadza")
+
+if h2 == h2b and h1 == h1b:
+    print("Podpis zostal potwierdzony")
 
