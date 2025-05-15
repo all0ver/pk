@@ -1,0 +1,16 @@
+dodatkowe wymagania:
+przeprowdzić 3 weryfikacje
+1) jeżeli wszystkie dane są w pełni poprawne
+2) jeżeli m1 != m -> porażka
+3) użytkowik B posiada z tych kluczy publicznych nie poprawnie (y_1 != y lub u_1 != u)
+
+
+
+
+Jeżeli ca się nie zgadza to zakończć program
+
+m -> losowo in <2, q-1>
+
+m1 ważne żeby była różna
+
+a, b in <1, q-1>
