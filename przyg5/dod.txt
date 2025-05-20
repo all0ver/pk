@@ -1,0 +1,8 @@
+dodatkowo:
+
+
+* jeżeli coś się nie zgadza to od razu koniec
+
+1. wsystko poprawnie
+2. n - nie Blum (ale liczba zlożona), n = p*q (więc p lub q != 3(mod 4))
+3. x, x0, x1 -> gdzieś musi nastąpić błąd
